@@ -1,0 +1,22 @@
+nav {
+  margin-top: 80px;
+}
+
+nav > ul > li {
+  display: flex;
+  padding: 10px;
+  margin-bottom: 16px;
+  align-items: flex-start;
+  gap: 10px;
+
+  color: var(--color-black);
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+}
+
+nav > ul > li:last-child {
+  margin-bottom: 0;
+}

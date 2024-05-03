@@ -1,6 +1,7 @@
 .App {
   max-width: 1440px;
+  height: 100vh;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 3fr 9fr;
+  grid-template-columns: 2.2fr 9fr;
 }
