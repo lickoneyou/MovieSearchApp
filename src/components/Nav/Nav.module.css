@@ -20,3 +20,14 @@ nav > ul > li {
 nav > ul > li:last-child {
   margin-bottom: 0;
 }
+
+.active {
+  color: var(--color-purple500Main);
+  font-weight: 700;
+  border-radius: 8px;
+  background: var(--color-purple200);
+}
+
+.link {
+  width: 100%;
+}
