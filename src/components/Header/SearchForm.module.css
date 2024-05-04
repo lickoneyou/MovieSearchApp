@@ -1,0 +1,14 @@
+.searchForm {
+  min-width: 490px;
+}
+
+.searchForm input {
+  border: 1px solid var(--color-gray200);
+  font-family: Inter;
+  font-size: 16px;
+}
+
+.searchForm input::placeholder {
+  font-family: Inter;
+  font-size: 14px;
+}

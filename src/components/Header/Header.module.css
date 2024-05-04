@@ -1,0 +1,18 @@
+header {
+  display: flex;
+  margin: 41.5px 90px 0 90px;
+}
+
+.searchWrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.headerTitle {
+  color: var(--color-black);
+  font-family: Inter;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 140%;
+}

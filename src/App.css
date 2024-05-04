@@ -4,4 +4,5 @@
   margin: 0 auto;
   display: grid;
   grid-template-columns: 2.2fr 9fr;
+  background-color: var(--color-gray100);
 }
