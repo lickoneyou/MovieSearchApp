@@ -1,0 +1,6 @@
+.filterSelect label {
+  color: var(--color-black);
+  font-family: Inter;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+}

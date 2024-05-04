@@ -1,6 +1,8 @@
 import React from 'react'
+import FilterForm from './FilterSelect'
 import styles from './Header.module.css'
 import SearchForm from './SearchForm'
+import { Button } from '@mantine/core'
 
 const Header = () => {
   return (
@@ -8,6 +10,35 @@ const Header = () => {
       <div className={styles.searchWrapper}>
         <h2 className={styles.headerTitle}>Movies</h2>
         <SearchForm />
+      </div>
+      <div className={styles.filterFormWrapper}>
+        <FilterForm
+          label="Genres"
+          placeholder="Select genre"
+          isIcon={true}
+          width="284"
+        />
+        <FilterForm
+          label="Release year"
+          placeholder="Select release year"
+          isIcon={true}
+          width="284"
+        />
+        <FilterForm
+          label="Ratings"
+          placeholder="From"
+          isIcon={false}
+          width="138"
+        />
+        <FilterForm label="" placeholder="To" isIcon={false} width="138" />
+        <Button
+          variant="transparent"
+          color="var(--color-gray600)"
+          pr="0px"
+          pl="5"
+        >
+          Reset filters
+        </Button>
       </div>
     </header>
   )

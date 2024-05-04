@@ -1,5 +1,6 @@
 header {
   display: flex;
+  flex-direction: column;
   margin: 41.5px 90px 0 90px;
 }
 
@@ -15,4 +16,10 @@ header {
   font-size: 32px;
   font-weight: 700;
   line-height: 140%;
+}
+
+.filterFormWrapper{
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
 }
