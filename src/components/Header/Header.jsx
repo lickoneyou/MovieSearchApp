@@ -40,7 +40,7 @@ const Header = () => {
           Reset filters
         </Button>
       </div>
-      
+      <FilterSelect label='Sort by' placeholder='Select sort' isIcon={true} width='284' mt='10'/>
     </header>
   )
 }

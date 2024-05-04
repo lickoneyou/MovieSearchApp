@@ -1,6 +1,7 @@
 header {
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
   margin: 41.5px 90px 0 90px;
 }
 
@@ -22,4 +23,5 @@ header {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
+  width: 100%;
 }
