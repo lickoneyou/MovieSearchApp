@@ -1,8 +1,10 @@
-import React, { useEffect, useRef } from 'react'
-import styles from './Nav.module.css'
-import { Link } from 'react-router-dom'
+'use client'
 
-const Nav = () => {
+import { useEffect, useRef } from 'react'
+import Link from 'next/link'
+import styles from './Links.module.css'
+
+const Links = () => {
   const list = useRef()
 
   useEffect(() => {
@@ -17,17 +19,21 @@ const Nav = () => {
   }, [window.location.href])
 
   return (
-    <nav>
+    <nav className={styles.nav}>
       <ul ref={list}>
         <li>
-          <Link to="/" className={styles.link}>Movies</Link>
+          <Link href="/" className={styles.link}>
+            Movies
+          </Link>
         </li>
         <li>
-          <Link to="/rated" className={styles.link}>Rated movies</Link>
+          <Link href="/rated" className={styles.link}>
+            Rated movies
+          </Link>
         </li>
       </ul>
     </nav>
   )
 }
 
-export default Nav
+export default Links

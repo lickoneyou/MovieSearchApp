@@ -1,12 +1,11 @@
-import React from 'react'
 import FilterSelect from './FilterSelect'
-import styles from './Header.module.css'
+import styles from './ControlPanel.module.css'
 import SearchForm from './SearchForm'
 import { Button } from '@mantine/core'
 
-const Header = () => {
+const ControlPanel = () => {
   return (
-    <header>
+    <header className={styles.header}>
       <div className={styles.searchWrapper}>
         <h2 className={styles.headerTitle}>Movies</h2>
         <SearchForm />
@@ -45,4 +44,4 @@ const Header = () => {
   )
 }
 
-export default Header
+export default ControlPanel

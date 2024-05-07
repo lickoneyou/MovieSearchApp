@@ -1,8 +1,8 @@
-nav {
+.nav {
   margin-top: 80px;
 }
 
-nav > ul > li {
+.nav > ul > li {
   display: flex;
   padding: 10px;
   margin-bottom: 16px;
@@ -17,13 +17,13 @@ nav > ul > li {
   line-height: 140%;
 }
 
-nav > ul > li:last-child {
+.nav > ul > li:last-child {
   margin-bottom: 0;
 }
 
 .active {
   color: var(--color-purple500Main);
-  font-weight: 700;
+  font-weight: 700 !important;
   border-radius: 8px;
   background: var(--color-purple200);
 }
