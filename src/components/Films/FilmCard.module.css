@@ -1,0 +1,81 @@
+.filmCard {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  border-radius: 12px;
+  background: var(--color-white);
+  padding: 24px;
+  width: 100%;
+  height: auto;
+}
+
+.filmCardContainer {
+  display: flex;
+  gap: 18px;
+}
+
+.filmCardDescr{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.filmCardPoster {
+  object-fit: contain;
+  width: auto !important;
+  height: 170px !important;
+}
+
+.filmCardTitle {
+  color: var(--color-purple500Main);
+  font-family: Inter;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.filmCardReleaseDate,
+.filmCardGenres {
+  color: var(--color-gray600);
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.filmCardRatingWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.filmCardRatingStars,
+.filmCardMyRatingStars {
+  width: 28px;
+  height: 28px;
+  color: var(--color-yellow);
+  margin-right: 4px;
+}
+
+.filmCardMyRatingStars {
+  margin-right: 0;
+  color: var(--color-gray300);
+  cursor: pointer;
+}
+
+.filmCardRatingVoteAverage {
+  color: var(--color-black);
+  font-family: Inter;
+  font-size: 20px;
+  font-weight: 600;
+  margin-right: 8px;
+}
+
+.filmCardRatingVoteCount {
+  color: var(--color-gray600);
+  font-family: Inter;
+  font-size: 19px;
+  font-weight: 400;
+}
+
+.filmCardGenres > span {
+  color: var(--color-black);
+}
