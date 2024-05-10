@@ -13,8 +13,7 @@
 
 .headerTitle {
   color: var(--color-black);
-  font-family: Inter;
-  font-size: 32px;
+  font-size: 31px;
   font-weight: 700;
   line-height: 140%;
 }

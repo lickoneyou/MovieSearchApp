@@ -5,13 +5,13 @@
 .nav > ul > li {
   display: flex;
   padding: 10px;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
   align-items: flex-start;
   gap: 10px;
 
   color: var(--color-black);
   font-family: Inter;
-  font-size: 16px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 400;
   line-height: 140%;
