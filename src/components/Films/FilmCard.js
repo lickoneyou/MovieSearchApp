@@ -3,6 +3,11 @@ import Link from 'next/link'
 import { IconStarFilled } from '@tabler/icons-react'
 import styles from './FilmCard.module.css'
 import { useEffect, useState } from 'react'
+import getImgSrc from '@/handlers/getImgSrc'
+import getYears from '@/handlers/getYears'
+import normalizeVoteAverage from '@/handlers/normalizeVoteAverage'
+import getGenres from '@/handlers/getGenres'
+import normalizeVoteCount from '@/handlers/normalizeVoteCount'
 
 const FilmCard = ({
   imgSrc,
@@ -15,39 +20,8 @@ const FilmCard = ({
 }) => {
   const [genres, setGenres] = useState([])
 
-  const getImgSrc = (width, imgSrc) => {
-    return `https://image.tmdb.org/t/p/w${width}${imgSrc}`
-  }
-
-  const getYears = (date) => {
-    return new Date(date).getFullYear()
-  }
-
-  const normalizeVoteAverage = (average) => {
-    return average.toFixed(1)
-  }
-
-  const getGenres = async (genreIds) => {
-    const res = await fetch('/api/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify('genre/movie/list'),
-    })
-    const data = await res.json()
-    const result = []
-    data.genres.forEach((genre) =>
-      genreIds.includes(genre.id) ? result.push(genre.name) : false,
-    )
-    setGenres(result)
-  }
-
-  const normalizeVoteCount = (counter) => {
-    if (counter < 999999 && counter > 1000) return (counter / 1000).toFixed() + 'K'
-    return counter
-  }
-
   useEffect(() => {
-    getGenres(genreIds)
+    getGenres(genreIds, setGenres)
   }, [genreIds])
 
   return (
