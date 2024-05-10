@@ -2,7 +2,14 @@ import { Group, Select, rem } from '@mantine/core'
 import { IconChevronDown, IconSelector } from '@tabler/icons-react'
 import styles from './FilterSelect.module.css'
 
-function FilterSelect({ label, placeholder, isIcon, width = 0, mt = 25 }) {
+function FilterSelect({
+  label,
+  placeholder,
+  isIcon,
+  width = 0,
+  mt = 25,
+  data = [],
+}) {
   const iconChevronDown = (
     <IconChevronDown style={{ width: rem(16), height: rem(16) }} />
   )
@@ -16,7 +23,7 @@ function FilterSelect({ label, placeholder, isIcon, width = 0, mt = 25 }) {
         mt="md"
         className={styles.filterSelect}
         style={{ width: `${width}px` }}
-        data={['React', 'Angular', 'Svelte', 'Vue']}
+        data={data}
         radius="sm"
         size="md"
         id=""
