@@ -1,5 +1,5 @@
 const normalizeVoteAverage = (average) => {
-  return average.toFixed(1)
+  return Number(average).toFixed(1)
 }
 
 export default normalizeVoteAverage
