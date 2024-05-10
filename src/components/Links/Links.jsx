@@ -3,20 +3,16 @@
 import { useEffect, useRef } from 'react'
 import Link from 'next/link'
 import styles from './Links.module.css'
+import { useRouter } from 'next/navigation'
+import highlightingNavElements from '@/handlers/highlightingNavElements'
 
 const Links = () => {
   const list = useRef()
+  const router = useRouter()
 
   useEffect(() => {
-    const listItem = list.current.childNodes
-    listItem.forEach((list) => {
-      if (window.location.href === list.firstElementChild.href) {
-        list.classList.add(styles.active)
-      } else {
-        list.classList.remove(styles.active)
-      }
-    })
-  }, [window.location.href])
+    highlightingNavElements(list)
+  }, [router])
 
   return (
     <nav className={styles.nav}>
