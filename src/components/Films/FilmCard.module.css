@@ -22,7 +22,7 @@
 
 .filmCardPoster {
   object-fit: contain;
-  width: auto !important;
+  width: 119px !important;
   height: 170px !important;
 }
 
@@ -35,7 +35,7 @@
 }
 
 .filmCardReleaseDate,
-.filmCardGenres {
+.filmCardWriteUp {
   color: var(--color-gray600);
   font-family: Inter;
   font-size: 18px;
@@ -76,6 +76,6 @@
   font-weight: 400;
 }
 
-.filmCardGenres > span {
+.filmCardWriteUp > span {
   color: var(--color-black);
 }
