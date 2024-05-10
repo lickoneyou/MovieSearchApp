@@ -1,5 +1,6 @@
 import getFilms from '@/handlers/getFilms'
 import { useEffect, useState } from 'react'
+import Spinner from '../Spinner/Spinner'
 import styles from './Films.module.css'
 import FilmsPage from './FilmsPage'
 
@@ -12,7 +13,7 @@ const Films = () => {
 
   return (
     <main className={styles.films}>
-      <FilmsPage films={films} />
+      {films ? <FilmsPage films={films} /> : <Spinner />}
     </main>
   )
 }
