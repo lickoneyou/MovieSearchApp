@@ -32,7 +32,18 @@ const FilmFullInfo = () => {
             premiere={filmInfo.release_date}
             budget={filmInfo.budget}
             grossWorldwide={filmInfo.revenue}
+            w="250"
+            h="352"
           />
+          <div>
+            {filmInfo.video ? (
+              <div>
+                <h2>Trailer</h2>
+              </div>
+            ) : (
+              false
+            )}
+          </div>
         </>
       ) : (
         <Spinner />
