@@ -26,6 +26,8 @@ const FilmCard = ({
   premiere,
   budget,
   grossWorldwide,
+  w = '119',
+  h = '170'
 }) => {
   const [genres, setGenres] = useState([])
 
@@ -40,10 +42,9 @@ const FilmCard = ({
           className={styles.filmCardPoster}
           src={getImgSrc('400', imgSrc)}
           alt={title}
-          width="0"
-          height="0"
+          width={w}
+          height={h}
           sizes="100vw"
-          style={{ width: 'auto', height: '100%' }}
           placeholder="blur"
           blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNcVA8AAckBI7zuPHQAAAAASUVORK5CYII="
         />
