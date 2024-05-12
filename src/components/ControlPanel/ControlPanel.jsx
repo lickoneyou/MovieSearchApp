@@ -26,6 +26,7 @@ const ControlPanel = () => {
       <div className={styles.filterFormWrapper}>
         <FilterSelect
           label="Genres"
+          filter="genres"
           placeholder="Select genre"
           isIcon={true}
           width="284"
@@ -33,6 +34,7 @@ const ControlPanel = () => {
         />
         <FilterSelect
           label="Release year"
+          filter="releaseYear"
           placeholder="Select release year"
           isIcon={true}
           width="284"
@@ -40,6 +42,7 @@ const ControlPanel = () => {
         />
         <FilterSelect
           label="Ratings"
+          filter="ratingsFrom"
           placeholder="From"
           isIcon={false}
           width="138"
@@ -47,6 +50,7 @@ const ControlPanel = () => {
         />
         <FilterSelect
           label=""
+          filter="ratingsTo"
           placeholder="To"
           isIcon={false}
           width="138"
