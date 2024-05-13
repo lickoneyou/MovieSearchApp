@@ -7,15 +7,18 @@ import getAllGenres from '@/handlers/getAllGenres'
 import normalizeGenres from '@/handlers/normalizeGenres'
 import getOldestDate from '@/handlers/getOldestDate'
 import createArrayYears from '@/handlers/createArrayYears'
+import { useDispatch } from 'react-redux'
 
 const ControlPanel = () => {
   const [genre, setGenre] = useState([])
   const [oldestDate, setOldestDate] = useState([])
+  const dispath = useDispatch()
 
   useEffect(() => {
     getAllGenres(setGenre)
     getOldestDate(setOldestDate)
   }, [])
+
 
   return (
     <header className={styles.header}>
@@ -26,41 +29,70 @@ const ControlPanel = () => {
       <div className={styles.filterFormWrapper}>
         <FilterSelect
           label="Genres"
-          filter="genres"
+          filter="with_genres"
           placeholder="Select genre"
           isIcon={true}
           width="284"
-          data={normalizeGenres(genre)}
+          data={...[{ value: '', lable: '', disabled: true }, ...normalizeGenres(genre)]}
         />
         <FilterSelect
           label="Release year"
-          filter="releaseYear"
+          filter="primary_release_year"
           placeholder="Select release year"
           isIcon={true}
           width="284"
-          data={createArrayYears(oldestDate)}
+          data={...[{ value: '', lable: '', disabled: true }, ...createArrayYears(oldestDate)]}
         />
         <FilterSelect
           label="Ratings"
-          filter="ratingsFrom"
+          filter="vote_average.gte"
           placeholder="From"
           isIcon={false}
           width="138"
-          data={['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10']}
+          data={[
+            { value: '', lable: '', disabled: true },
+            { value: '0', label: '0' },
+            { value: '1', label: '1' },
+            { value: '2', label: '2' },
+            { value: '3', label: '3' },
+            { value: '4', label: '4' },
+            { value: '5', label: '5' },
+            { value: '6', label: '6' },
+            { value: '7', label: '7' },
+            { value: '8', label: '8' },
+            { value: '9', label: '9' },
+            { value: '10', label: '10' },
+          ]}
         />
         <FilterSelect
           label=""
-          filter="ratingsTo"
+          filter="vote_average.lte"
           placeholder="To"
           isIcon={false}
           width="138"
-          data={['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10']}
+          data={[
+            { value: '', lable: '', disabled: true },
+            { value: '0', label: '0' },
+            { value: '1', label: '1' },
+            { value: '2', label: '2' },
+            { value: '3', label: '3' },
+            { value: '4', label: '4' },
+            { value: '5', label: '5' },
+            { value: '6', label: '6' },
+            { value: '7', label: '7' },
+            { value: '8', label: '8' },
+            { value: '9', label: '9' },
+            { value: '10', label: '10' },
+          ]}
         />
         <Button
           variant="transparent"
           color="var(--color-gray600)"
           pr="0px"
           pl="5"
+          onClick={() => {
+            dispath({ type: 'RESET_FILTERS' })
+          }}
         >
           Reset filters
         </Button>
