@@ -100,9 +100,23 @@ const ControlPanel = () => {
       <FilterSelect
         label="Sort by"
         placeholder="Select sort"
+        filter='sort_by'
         isIcon={true}
         width="284"
         mt="10"
+        data={[
+            { value: '', lable: '', disabled: true },
+            { value: 'Title ▲', label: 'Title ▲' },
+            { value: 'Title ▼', label: 'Title ▼' },
+            { value: 'Popularity ▲', label: 'Popularity ▲' },
+            { value: 'Popularity ▼', label: 'Popularity ▼' },
+            { value: 'Release date ▲', label: 'Release date ▲' },
+            { value: 'Release date ▼', label: 'Release date ▼' },
+            { value: 'Vote average ▲', label: 'Vote average ▲' },
+            { value: 'Vote average ▼', label: 'Vote average ▼' },
+            { value: 'Vote count ▲', label: 'Vote count ▲' },
+            { value: 'Vote count ▼', label: 'Vote count ▼' },
+          ]}
       />
     </header>
   )
