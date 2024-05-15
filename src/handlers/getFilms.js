@@ -1,5 +1,5 @@
-const getFilms = async (set, query) => {
-  const res = await fetch('/api/discover/movie', {
+const getFilms = async (set, query, path) => {
+  const res = await fetch(`/api/${path}/movie`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(query),
