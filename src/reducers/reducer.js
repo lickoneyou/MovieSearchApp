@@ -3,6 +3,8 @@ const defaultState = {
   primary_release_year: '',
   'vote_average.gte': '',
   'vote_average.lte': '',
+  query: '',
+  sort_by: ''
 }
 
 export const reducer = (state = defaultState, action) => {
@@ -13,6 +15,8 @@ export const reducer = (state = defaultState, action) => {
       return { ...state, [filter]: value }
     case 'RESET_FILTERS':
       return { ...defaultState }
+    case 'RESET_FILTERS_WITHOUT_QUERY':
+      return { ...defaultState, query: state.query }
     default:
       return state
   }
