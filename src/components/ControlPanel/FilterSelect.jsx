@@ -1,6 +1,6 @@
+import createAddFilterObject from '@/handlers/createAddFilterObject'
 import getAllGenres from '@/handlers/getAllGenres'
-import getGenreId from '@/handlers/getGenreId'
-import getGenreName from '@/handlers/getGenreName'
+import getSelectValue from '@/handlers/getSelectValue'
 import { Group, Select, rem } from '@mantine/core'
 import { IconChevronDown, IconSelector } from '@tabler/icons-react'
 import { useEffect, useState } from 'react'
@@ -22,9 +22,9 @@ function FilterSelect({
   const iconSelector = (
     <IconSelector style={{ width: rem(16), height: rem(16) }} />
   )
-  const dispath = useDispatch()
+  const dispatch = useDispatch()
   const [genre, setGenre] = useState([])
-  const value = useSelector(value => value)
+  const value = useSelector((value) => value)
 
   useEffect(() => {
     getAllGenres(setGenre)
@@ -39,18 +39,18 @@ function FilterSelect({
         data={data}
         radius="sm"
         size="md"
-        value={label === 'Genres' ? getGenreName(genre, value[filter]) : value[filter]}
+        value={getSelectValue(label, genre, value, filter)}
         placeholder={placeholder}
         label={label}
         rightSection={isIcon ? iconChevronDown : iconSelector}
-        comboboxProps={{ transitionProps: { transition: 'pop', duration: 200 }, shadow: 'md' }}
+        comboboxProps={{
+          transitionProps: { transition: 'pop', duration: 200 },
+          shadow: 'md',
+        }}
         onChange={(e) => {
-          dispath({
+          dispatch({
             type: 'ADD_FILTER',
-            payload: {
-              filter: filter,
-              value: label === 'Genres' ? getGenreId(genre, e) : e,
-            },
+            payload: createAddFilterObject(filter, label, genre, e),
           })
         }}
       />
