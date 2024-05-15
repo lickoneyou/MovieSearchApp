@@ -6,12 +6,12 @@ import FilmsPage from './FilmsPage'
 import { useSelector } from 'react-redux'
 import getQueryArray from '@/handlers/getQueryArray'
 
-const Films = () => {
+const Films = ({path}) => {
   const [films, setFilms] = useState('')
   const filters = useSelector((filters) => filters)
 
   useEffect(() => {
-    getFilms(setFilms, getQueryArray(filters))
+    getFilms(setFilms, getQueryArray(filters), path)
   }, [filters])
 
   return (
