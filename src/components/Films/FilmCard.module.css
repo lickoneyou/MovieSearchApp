@@ -14,14 +14,14 @@
   gap: 18px;
 }
 
-.filmCardDescr{
+.filmCardDescr {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
 .filmCardPoster {
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .filmCardTitle {
