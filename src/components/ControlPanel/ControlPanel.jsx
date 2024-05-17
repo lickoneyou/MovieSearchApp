@@ -11,7 +11,7 @@ import { useDispatch } from 'react-redux'
 
 const ControlPanel = () => {
   const [genre, setGenre] = useState([])
-  const [oldestDate, setOldestDate] = useState([])
+  const [oldestDate, setOldestDate] = useState('')
   const dispath = useDispatch()
 
   useEffect(() => {
@@ -21,7 +21,8 @@ const ControlPanel = () => {
 
 
   return (
-    <header className={styles.header}>
+    <>
+    {oldestDate === 'Server' ? <></> : (<header className={styles.header}>
       <div className={styles.searchWrapper}>
         <h2 className={styles.headerTitle}>Movies</h2>
         <SearchForm />
@@ -118,7 +119,8 @@ const ControlPanel = () => {
             { value: 'Vote count ▼', label: 'Vote count ▼' },
           ]}
       />
-    </header>
+    </header>)}
+  </>
   )
 }
 
