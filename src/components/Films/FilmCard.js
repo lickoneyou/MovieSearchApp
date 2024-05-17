@@ -13,6 +13,8 @@ import normalizeDate from '@/handlers/normalizeDate'
 import normalizeСurrency from '@/handlers/normalizeСurrency'
 import noPoster from '../../img/noPoster.png'
 import createGenresNamesArray from '@/handlers/createGenresNamesArray'
+import { useDisclosure } from '@mantine/hooks'
+import { Button, Modal, Rating } from '@mantine/core'
 
 const FilmCard = ({
   imgSrc,
@@ -34,6 +36,9 @@ const FilmCard = ({
   const [src, setSrc] = useState(
     'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNcVA8AAckBI7zuPHQAAAAASUVORK5CYII=',
   )
+  const [opened, { open, close }] = useDisclosure(false)
+  const [ratingValue, setRatingValue] = useState(0)
+  const [saveRatingValue, setSaveRatingValue] = useState(0)
 
   useEffect(() => {
     if (genreIds) getGenres(genreIds, setGenres)
@@ -41,78 +46,121 @@ const FilmCard = ({
   }, [])
 
   return (
-    <div className={styles.filmCard}>
-      <div className={styles.filmCardContainer}>
-        <Image
-          className={styles.filmCardPoster}
-          src={imgSrc ? src : noPoster}
-          alt={title}
-          width={w}
-          height={h}
-          sizes="100vw"
-          placeholder="blur"
-          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNcVA8AAckBI7zuPHQAAAAASUVORK5CYII="
-        />
-        <div className={styles.filmCardDescr}>
-          <div>
-            <Link className={styles.filmCardTitle} href={String(id)}>
-              {title}
-            </Link>
-            <p className={styles.filmCardReleaseDate}>
-              {getYears(releaseDate)}
-            </p>
-            <div className={styles.filmCardRatingWrapper}>
-              <IconStarFilled className={styles.filmCardRatingStars} />
-              <p className={styles.filmCardRatingVoteAverage}>
-                {normalizeVoteAverage(voteAverage)}
+    <>
+      <Modal.Root opened={opened} onClose={close} centered={true} size={'sm'}>
+        <Modal.Overlay />
+        <Modal.Content>
+          <Modal.Header className={styles.modalHeader}>
+            <Modal.Title className={styles.modalTitle}>Your rating</Modal.Title>
+            <Modal.CloseButton className={styles.modalCloseButton} />
+          </Modal.Header>
+          <Modal.Body className={styles.modalBody}>
+            <h2 className={styles.modalFilmTitle}>{title}</h2>
+            <Rating
+              className={styles.modalRating}
+              value={ratingValue}
+              onChange={setRatingValue}
+              count="10"
+              size="xl"
+            />
+            <Button
+              onClick={() => {
+                close()
+                setSaveRatingValue(ratingValue)
+              }}
+              className={styles.modalButton}
+              variant="filled"
+            >
+              Save
+            </Button>
+          </Modal.Body>
+        </Modal.Content>
+      </Modal.Root>
+      <div className={styles.filmCard}>
+        <div className={styles.filmCardContainer}>
+          <Image
+            className={styles.filmCardPoster}
+            src={imgSrc ? src : noPoster}
+            alt={title}
+            width={w}
+            height={h}
+            sizes="100vw"
+            placeholder="blur"
+            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNcVA8AAckBI7zuPHQAAAAASUVORK5CYII="
+          />
+          <div className={styles.filmCardDescr}>
+            <div>
+              <Link className={styles.filmCardTitle} href={String(id)}>
+                {title}
+              </Link>
+              <p className={styles.filmCardReleaseDate}>
+                {getYears(releaseDate)}
               </p>
-              <p className={styles.filmCardRatingVoteCount}>
-                ({normalizeVoteCount(voteCount)})
+              <div className={styles.filmCardRatingWrapper}>
+                <IconStarFilled className={styles.filmCardRatingStars} />
+                <p className={styles.filmCardRatingVoteAverage}>
+                  {normalizeVoteAverage(voteAverage)}
+                </p>
+                <p className={styles.filmCardRatingVoteCount}>
+                  ({normalizeVoteCount(voteCount)})
+                </p>
+              </div>
+            </div>
+            <div>
+              {duration ? (
+                <p className={styles.filmCardWriteUp}>
+                  Duration <span>{normalizeTime(duration)}</span>
+                </p>
+              ) : (
+                false
+              )}
+              {premiere ? (
+                <p className={styles.filmCardWriteUp}>
+                  Premiere <span>{normalizeDate(premiere)}</span>
+                </p>
+              ) : (
+                false
+              )}
+              {budget ? (
+                <p className={styles.filmCardWriteUp}>
+                  Budget <span>{normalizeСurrency(budget)}</span>
+                </p>
+              ) : (
+                false
+              )}
+              {grossWorldwide ? (
+                <p className={styles.filmCardWriteUp}>
+                  Gross worldwide{' '}
+                  <span>{normalizeСurrency(grossWorldwide)}</span>
+                </p>
+              ) : (
+                false
+              )}
+              <p className={styles.filmCardWriteUp}>
+                Genre{' '}
+                <span>
+                  {genreIds
+                    ? genres.join(', ')
+                    : createGenresNamesArray(genresArr).join(', ')}
+                </span>
               </p>
             </div>
           </div>
-          <div>
-            {duration ? (
-              <p className={styles.filmCardWriteUp}>
-                Duration <span>{normalizeTime(duration)}</span>
-              </p>
-            ) : (
-              false
-            )}
-            {premiere ? (
-              <p className={styles.filmCardWriteUp}>
-                Premiere <span>{normalizeDate(premiere)}</span>
-              </p>
-            ) : (
-              false
-            )}
-            {budget ? (
-              <p className={styles.filmCardWriteUp}>
-                Budget <span>{normalizeСurrency(budget)}</span>
-              </p>
-            ) : (
-              false
-            )}
-            {grossWorldwide ? (
-              <p className={styles.filmCardWriteUp}>
-                Gross worldwide <span>{normalizeСurrency(grossWorldwide)}</span>
-              </p>
-            ) : (
-              false
-            )}
-            <p className={styles.filmCardWriteUp}>
-              Genre{' '}
-              <span>
-                {genreIds
-                  ? genres.join(', ')
-                  : createGenresNamesArray(genresArr).join(', ')}
-              </span>
-            </p>
-          </div>
         </div>
+        <IconStarFilled
+          className={[
+            styles.filmCardMyRatingStars,
+            saveRatingValue > 0 ? styles.filmCardPurpleStars : false,
+          ].join(' ')}
+          onClick={open}
+        />
+        {saveRatingValue > 0 ? (
+          <p className={styles.rating}>{saveRatingValue}</p>
+        ) : (
+          false
+        )}
       </div>
-      <IconStarFilled className={styles.filmCardMyRatingStars} />
-    </div>
+    </>
   )
 }
 
