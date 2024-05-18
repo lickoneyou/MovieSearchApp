@@ -9,7 +9,7 @@ import ServerError from '../ServerError/ServerError'
 
 const Films = ({ path }) => {
   const [films, setFilms] = useState('')
-  const filters = useSelector((filters) => filters)
+  const filters = useSelector((filters) => filters.query)
 
   useEffect(() => {
     getFilms(setFilms, getQueryArray(filters), path)
