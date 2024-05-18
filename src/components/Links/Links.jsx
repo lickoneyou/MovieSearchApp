@@ -20,16 +20,34 @@ const Links = () => {
     dispatch({ type: 'RESET_FILTERS' })
   }
 
+  const addCrumbs = (crumbs) => {
+    dispatch({ type: 'ADD_CRUMBS', payload: crumbs })
+  }
+
   return (
     <nav className={styles.nav}>
       <ul ref={list}>
         <li>
-          <Link href="/" className={styles.link} onClick={deletedFilters}>
+          <Link
+            href="/"
+            className={styles.link}
+            onClick={() => {
+              deletedFilters()
+              addCrumbs({ crumbs: 'Movies', path: '/' })
+            }}
+          >
             Movies
           </Link>
         </li>
         <li>
-          <Link href="/rated" className={styles.link} onClick={deletedFilters}>
+          <Link
+            href="/rated"
+            className={styles.link}
+            onClick={() => {
+              deletedFilters()
+              addCrumbs({ crumbs: 'Rated', path: '/rated' })
+            }}
+          >
             Rated movies
           </Link>
         </li>

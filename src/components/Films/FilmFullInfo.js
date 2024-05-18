@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import Spinner from '../Spinner/Spinner'
+import Bredcr from './BreadCrumbs'
 import FilmCard from './FilmCard'
 import styles from './FilmFullInfo.module.css'
 
@@ -13,6 +14,7 @@ const FilmFullInfo = () => {
   const [filmInfo, setFilminfo] = useState({})
   const id = usePathname()
   const localStorageData = useSelector((data) => data.ratedData)
+  const crumbs = useSelector((data) => data.breadcrumbs)
 
   useEffect(() => {
     getFilmInfo(setFilminfo, id)
@@ -22,7 +24,7 @@ const FilmFullInfo = () => {
     <div className={styles.filmInfoWrapper}>
       {filmInfo.id ? (
         <>
-          <div className={styles.filmFullInfoCrumbs}>qwerqwewqs</div>
+          <Bredcr page={crumbs} filmTitle={filmInfo.title} filmPath={filmInfo.id}/>
           <FilmCard
             imgSrc={filmInfo.poster_path}
             title={filmInfo.title}
