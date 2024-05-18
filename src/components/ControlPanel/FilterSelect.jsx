@@ -24,7 +24,7 @@ function FilterSelect({
   )
   const dispatch = useDispatch()
   const [genre, setGenre] = useState([])
-  const value = useSelector((value) => value)
+  const value = useSelector((value) => value.query)
 
   useEffect(() => {
     getAllGenres(setGenre)
