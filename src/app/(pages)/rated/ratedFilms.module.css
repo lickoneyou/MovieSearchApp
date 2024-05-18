@@ -1,0 +1,28 @@
+.App {
+  max-width: 1440px;
+  height: 100vh;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2.2fr 9fr;
+  background-color: var(--color-gray100);
+}
+
+.ratedPageWrapper {
+  padding: 40px 90px 267px 90px;
+}
+
+.filmsPage {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding: 40px 0 24px 0;
+}
+
+.ratedFilmsTitle {
+  color: var(--color-black);
+  font-family: Inter;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%;
+}
