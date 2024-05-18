@@ -7,7 +7,7 @@ const defaultState = {
   sort_by: ''
 }
 
-export const reducer = (state = defaultState, action) => {
+export const query = (state = defaultState, action) => {
   switch (action.type) {
     case 'ADD_FILTER':
       const filter = action.payload.filter
