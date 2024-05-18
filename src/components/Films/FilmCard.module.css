@@ -127,6 +127,10 @@
   line-height: 140%;
 }
 
+.modalButton:hover {
+  background: var(--color-purple600);
+}
+
 .rating {
   margin-left: 9px;
 }
