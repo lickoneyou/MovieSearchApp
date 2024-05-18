@@ -15,6 +15,7 @@ import noPoster from '../../img/noPoster.png'
 import createGenresNamesArray from '@/handlers/createGenresNamesArray'
 import { useDisclosure } from '@mantine/hooks'
 import { Button, Modal, Rating } from '@mantine/core'
+import { useDispatch } from 'react-redux'
 
 const FilmCard = ({
   imgSrc,
@@ -31,14 +32,16 @@ const FilmCard = ({
   grossWorldwide,
   w = '119',
   h = '170',
+  rValue = 0,
 }) => {
   const [genres, setGenres] = useState([])
   const [src, setSrc] = useState(
     'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNcVA8AAckBI7zuPHQAAAAASUVORK5CYII=',
   )
   const [opened, { open, close }] = useDisclosure(false)
-  const [ratingValue, setRatingValue] = useState(0)
-  const [saveRatingValue, setSaveRatingValue] = useState(0)
+  const [ratingValue, setRatingValue] = useState(rValue)
+  const [saveRatingValue, setSaveRatingValue] = useState(rValue)
+  const dispatch = useDispatch()
 
   useEffect(() => {
     if (genreIds) getGenres(genreIds, setGenres)
@@ -67,6 +70,24 @@ const FilmCard = ({
               onClick={() => {
                 close()
                 setSaveRatingValue(ratingValue)
+                dispatch({
+                  type: 'ADD_FILM',
+                  payload: {
+                    imgSrc,
+                    title,
+                    id,
+                    releaseDate,
+                    voteAverage,
+                    voteCount,
+                    genreIds,
+                    genresArr,
+                    duration,
+                    premiere,
+                    budget,
+                    grossWorldwide,
+                    rValue: ratingValue,
+                  },
+                })
               }}
               className={styles.modalButton}
               variant="filled"
