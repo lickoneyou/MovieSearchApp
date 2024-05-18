@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import styles from './SearchForm.module.css'
 
 function SearchForm() {
-  const storeValue = useSelector((value) => value.query)
+  const storeValue = useSelector((value) => value.query.query)
   const [searchValue, setSearchValue] = useState(storeValue)
   const dispatch = useDispatch('')
   const router = useRouter()
