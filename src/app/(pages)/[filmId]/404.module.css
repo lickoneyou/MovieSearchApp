@@ -1,0 +1,47 @@
+.App {
+  max-width: 1440px;
+  height: 100vh;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2.2fr 9fr;
+  grid-template-rows: 3fr 9fr;
+  background-color: var(--color-gray100);
+}
+
+.notFoundWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.notFoundTitle {
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin: 48px 0 16px 0;
+}
+
+.notFoundBtn {
+  display: flex;
+  padding: 10px 20px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  background: var(--color-purple500Main);
+
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%;
+}
+
+.notFoundBtn:hover {
+  background: var(--color-purple600);
+}
