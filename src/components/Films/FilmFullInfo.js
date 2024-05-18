@@ -1,8 +1,10 @@
 'use client'
 
 import getFilmInfo from '@/handlers/getFilmInfo'
+import localStorageDataChecker from '@/handlers/localStorageDataChecker'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 import Spinner from '../Spinner/Spinner'
 import FilmCard from './FilmCard'
 import styles from './FilmFullInfo.module.css'
@@ -10,6 +12,7 @@ import styles from './FilmFullInfo.module.css'
 const FilmFullInfo = () => {
   const [filmInfo, setFilminfo] = useState({})
   const id = usePathname()
+  const localStorageData = useSelector((data) => data.ratedData)
 
   useEffect(() => {
     getFilmInfo(setFilminfo, id)
@@ -34,6 +37,11 @@ const FilmFullInfo = () => {
             grossWorldwide={filmInfo.revenue}
             w="250"
             h="352"
+            rValue={localStorageDataChecker(
+              filmInfo,
+              localStorageData,
+              'rValue',
+            )}
           />
           <div>
             {filmInfo.video ? (
