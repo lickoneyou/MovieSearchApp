@@ -3,3 +3,22 @@
   grid-template-columns: 1fr 1fr;
   gap: 8px;
 }
+
+.notsearchWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  grid-column: 1/3;
+  gap: 16px;
+}
+
+.notsearchTitle {
+  color: var(--color-black);
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 1.3px;
+}
