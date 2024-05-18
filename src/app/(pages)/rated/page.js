@@ -1,23 +1,27 @@
 'use client'
 
 import FilmCard from '@/components/Films/FilmCard'
-import FilmsPage from '@/components/Films/FilmsPage'
 import NavPanel from '@/components/NavPanel/NavPanel'
+import Image from 'next/image'
 import { useSelector } from 'react-redux'
 import styles from './ratedFilms.module.css'
+import img from '../../../img/notrate.png'
+import { Button } from '@mantine/core'
+import { useRouter } from 'next/navigation'
 
 export default function Rated() {
   const storageData = useSelector((data) => data.ratedData)
   const films = Object.values(storageData)
+  const router = useRouter()
 
   return (
     <div className={styles.App}>
       <NavPanel />
-      <div className={styles.ratedPageWrapper}>
-        <h2 className={styles.ratedFilmsTitle}>Watched movies</h2>
-        <div className={styles.filmsPage}>
-          {films ? (
-            films.map((film) => (
+      {films.length ? (
+        <div className={styles.ratedPageWrapper}>
+          <h2 className={styles.ratedFilmsTitle}>Watched movies</h2>
+          <div className={styles.filmsPage}>
+            {films.map((film) => (
               <FilmCard
                 key={film.id}
                 imgSrc={film.imgSrc}
@@ -29,12 +33,18 @@ export default function Rated() {
                 genreIds={film.genreIds}
                 rValue={film.rValue}
               />
-            ))
-          ) : (
-            <div></div>
-          )}
+            ))}
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className={styles.notrateWrapper}>
+          <Image src={img} />
+          <h3 className={styles.notrateTitle}>
+            You haven't rated any films yet
+          </h3>
+          <Button onClick={() => router.push('/')} className={styles.notrateBtn}>Find movies</Button>
+        </div>
+      )}
     </div>
   )
 }
