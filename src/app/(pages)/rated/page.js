@@ -3,27 +3,36 @@
 import FilmCard from '@/components/Films/FilmCard'
 import NavPanel from '@/components/NavPanel/NavPanel'
 import Image from 'next/image'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import styles from './ratedFilms.module.css'
 import img from '../../../img/notrate.png'
 import { Button } from '@mantine/core'
 import { useRouter } from 'next/navigation'
 import _ from 'lodash'
 import ControlledPagination from '@/components/Pagination/Pagination'
+import SearchForm from '@/components/ControlPanel/SearchForm'
 
 export default function Rated() {
   const storageData = useSelector((data) => data.ratedData)
+  const searchData = useSelector((data) => data.query.query)
+  const dispatch = useDispatch()
   const router = useRouter()
-  const chunkFilms = _.chunk(Object.values(storageData), 4)
+  const filteredData = Object.values(storageData).filter((film) =>
+    film.title.toLowerCase().includes(searchData.toLowerCase()),
+  )
+  const chunkFilms = _.chunk(filteredData, 4)
   const page = useSelector((data) => data.query.page)
-  let films = chunkFilms[page - 1]
+  const films = chunkFilms[page - 1]
 
   return (
     <div className={styles.App}>
       <NavPanel />
-      {films.length ? (
+      {chunkFilms.length ? (
         <div className={styles.ratedPageWrapper}>
-          <h2 className={styles.ratedFilmsTitle}>Watched movies</h2>
+          <div className={styles.searchWrapper}>
+            <h2 className={styles.ratedFilmsTitle}>Rated movies</h2>
+            <SearchForm isRated={true} />
+          </div>
           <div className={styles.filmsPage}>
             {films.map((film) => (
               <FilmCard
@@ -39,16 +48,19 @@ export default function Rated() {
               />
             ))}
           </div>
-          <ControlledPagination pages={chunkFilms.length} position='center'/>
+          <ControlledPagination pages={chunkFilms.length} position="center" />
         </div>
       ) : (
         <div className={styles.notrateWrapper}>
-          <Image src={img} />
+          <Image src={img} alt="not films" />
           <h3 className={styles.notrateTitle}>
             You haven't rated any films yet
           </h3>
           <Button
-            onClick={() => router.push('/')}
+            onClick={() => {
+              dispatch({ type: 'RESET_FILTERS' })
+              router.push('/')
+            }}
             className={styles.notrateBtn}
           >
             Find movies

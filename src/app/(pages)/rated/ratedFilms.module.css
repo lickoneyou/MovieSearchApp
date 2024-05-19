@@ -11,6 +11,12 @@
   padding: 40px 90px 0 90px;
 }
 
+.searchWrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
 .filmsPage {
   display: grid;
   grid-template-columns: 1fr 1fr;
