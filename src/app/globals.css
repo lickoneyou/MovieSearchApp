@@ -14,3 +14,7 @@
   --color-purple100: #f2ebf9;
   --color-yellow: #fab005;
 }
+
+.mantine-Pagination-dots {
+  display: none !important;
+}
