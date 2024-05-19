@@ -16,6 +16,7 @@ const ControlledPagination = ({ pages, position = 'end' }) => {
           type: 'ADD_FILTER',
           payload: { filter: 'page', value: e },
         })
+        window.scrollTo(0, 0)
       }}
       total={pages}
       style={{ display: 'flex', justifyContent: position }}
