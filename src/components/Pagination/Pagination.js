@@ -2,7 +2,7 @@ import { Pagination } from '@mantine/core'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 
-const ControlledPagination = ({ pages }) => {
+const ControlledPagination = ({ pages, position = 'end' }) => {
   const [activePage, setPage] = useState(1)
   const dispatch = useDispatch()
 
@@ -18,7 +18,7 @@ const ControlledPagination = ({ pages }) => {
         })
       }}
       total={pages}
-      style={{display: 'flex', justifyContent: 'end'}}
+      style={{ display: 'flex', justifyContent: position }}
       color="var(--color-purple500Main)"
     />
   )
