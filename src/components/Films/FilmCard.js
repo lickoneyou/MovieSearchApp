@@ -182,18 +182,20 @@ const FilmCard = ({
             </div>
           </div>
         </div>
-        <IconStarFilled
-          className={[
-            styles.filmCardMyRatingStars,
-            saveRatingValue > 0 ? styles.filmCardPurpleStars : false,
-          ].join(' ')}
-          onClick={open}
-        />
-        {saveRatingValue > 0 ? (
-          <p className={styles.rating}>{saveRatingValue}</p>
-        ) : (
-          false
-        )}
+        <div className={styles.rateWrapper}>
+          <IconStarFilled
+            className={[
+              styles.filmCardMyRatingStars,
+              saveRatingValue > 0 ? styles.filmCardPurpleStars : false,
+            ].join(' ')}
+            onClick={open}
+          />
+          {saveRatingValue > 0 ? (
+            <p className={styles.rating}>{saveRatingValue}</p>
+          ) : (
+            false
+          )}
+        </div>
       </div>
     </>
   )

@@ -135,6 +135,10 @@
   margin-left: 9px;
 }
 
+.rateWrapper {
+  display: flex;
+}
+
 .btnWrapper {
   display: flex;
 }
