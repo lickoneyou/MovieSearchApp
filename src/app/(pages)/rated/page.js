@@ -8,11 +8,15 @@ import styles from './ratedFilms.module.css'
 import img from '../../../img/notrate.png'
 import { Button } from '@mantine/core'
 import { useRouter } from 'next/navigation'
+import _ from 'lodash'
+import ControlledPagination from '@/components/Pagination/Pagination'
 
 export default function Rated() {
   const storageData = useSelector((data) => data.ratedData)
-  const films = Object.values(storageData)
   const router = useRouter()
+  const chunkFilms = _.chunk(Object.values(storageData), 4)
+  const page = useSelector((data) => data.query.page)
+  let films = chunkFilms[page - 1]
 
   return (
     <div className={styles.App}>
@@ -35,6 +39,7 @@ export default function Rated() {
               />
             ))}
           </div>
+          <ControlledPagination pages={chunkFilms.length} position='center'/>
         </div>
       ) : (
         <div className={styles.notrateWrapper}>
@@ -42,7 +47,12 @@ export default function Rated() {
           <h3 className={styles.notrateTitle}>
             You haven't rated any films yet
           </h3>
-          <Button onClick={() => router.push('/')} className={styles.notrateBtn}>Find movies</Button>
+          <Button
+            onClick={() => router.push('/')}
+            className={styles.notrateBtn}
+          >
+            Find movies
+          </Button>
         </div>
       )}
     </div>
