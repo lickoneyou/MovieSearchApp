@@ -134,3 +134,7 @@
 .rating {
   margin-left: 9px;
 }
+
+.btnWrapper {
+  display: flex;
+}

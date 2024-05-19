@@ -66,34 +66,48 @@ const FilmCard = ({
               count="10"
               size="xl"
             />
-            <Button
-              onClick={() => {
-                close()
-                setSaveRatingValue(ratingValue)
-                dispatch({
-                  type: 'ADD_FILM',
-                  payload: {
-                    imgSrc,
-                    title,
-                    id,
-                    releaseDate,
-                    voteAverage,
-                    voteCount,
-                    genreIds,
-                    genresArr,
-                    duration,
-                    premiere,
-                    budget,
-                    grossWorldwide,
-                    rValue: ratingValue,
-                  },
-                })
-              }}
-              className={styles.modalButton}
-              variant="filled"
-            >
-              Save
-            </Button>
+            <div className={styles.btnWrapper}>
+              <Button
+                onClick={() => {
+                  close()
+                  setSaveRatingValue(ratingValue)
+                  dispatch({
+                    type: 'ADD_FILM',
+                    payload: {
+                      imgSrc,
+                      title,
+                      id,
+                      releaseDate,
+                      voteAverage,
+                      voteCount,
+                      genreIds,
+                      genresArr,
+                      duration,
+                      premiere,
+                      budget,
+                      grossWorldwide,
+                      rValue: ratingValue,
+                    },
+                  })
+                }}
+                className={styles.modalButton}
+                variant="filled"
+              >
+                Save
+              </Button>
+              <Button
+                variant="transparent"
+                color="var(--color-purple500Main)"
+                onClick={() => {
+                  close()
+                  setRatingValue(0)
+                  setSaveRatingValue(0)
+                  dispatch({ type: 'REMOVE_FILM', payload: { id } })
+                }}
+              >
+                Remove rating
+              </Button>
+            </div>
           </Modal.Body>
         </Modal.Content>
       </Modal.Root>

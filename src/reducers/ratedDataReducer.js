@@ -1,4 +1,5 @@
 import addLocalStorageFilmHandler from '@/handlers/addLocalStorageFilmHandler'
+import removeLocalStorageFilmHandler from '@/handlers/removeLocalStorageFilmHandler'
 
 export const ratedData = (state, action) => {
   if (!localStorage.getItem('ratedData')) {
@@ -11,6 +12,9 @@ export const ratedData = (state, action) => {
     case 'ADD_FILM':
       state[action.payload.id] = action.payload
       return addLocalStorageFilmHandler(state, action)
+    case 'REMOVE_FILM':
+      delete state[action.payload.id]
+      return removeLocalStorageFilmHandler(state)
     default:
       return state
   }
