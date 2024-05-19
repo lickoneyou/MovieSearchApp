@@ -4,7 +4,8 @@ const defaultState = {
   'vote_average.gte': '',
   'vote_average.lte': '',
   query: '',
-  sort_by: ''
+  sort_by: '',
+  page: '1',
 }
 
 export const query = (state = defaultState, action) => {
