@@ -5,11 +5,21 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styles from './SearchForm.module.css'
 
-function SearchForm() {
+function SearchForm({ isRated = false }) {
   const storeValue = useSelector((value) => value.query.query)
   const [searchValue, setSearchValue] = useState(storeValue)
   const dispatch = useDispatch('')
   const router = useRouter()
+
+  const sendDispatchAction = () => {
+    dispatch({
+      type: 'ADD_FILTER',
+      payload: {
+        filter: 'query',
+        value: searchValue,
+      },
+    })
+  }
 
   return (
     <TextInput
@@ -28,15 +38,13 @@ function SearchForm() {
           radius="md"
           color="var( --color-purple500Main)"
           onClick={() => {
-            dispatch({
-              type: 'ADD_FILTER',
-              payload: {
-                filter: 'query',
-                value: searchValue,
-              },
-            })
-            router.push('search')
-            dispatch({ type: 'RESET_FILTERS_WITHOUT_QUERY' })
+            if (isRated) {
+              sendDispatchAction()
+            } else {
+              sendDispatchAction()
+              router.push('search')
+              dispatch({ type: 'RESET_FILTERS_WITHOUT_QUERY' })
+            }
           }}
         >
           Search
