@@ -6,6 +6,7 @@ import FilmsPage from './FilmsPage'
 import { useSelector } from 'react-redux'
 import getQueryArray from '@/handlers/getQueryArray'
 import ServerError from '../ServerError/ServerError'
+import ControlledPagination from '../Pagination/Pagination'
 
 const Films = ({ path }) => {
   const [films, setFilms] = useState('')
@@ -13,6 +14,7 @@ const Films = ({ path }) => {
 
   useEffect(() => {
     getFilms(setFilms, getQueryArray(filters), path)
+    console.log(films)
   }, [filters])
 
   return (
@@ -22,6 +24,7 @@ const Films = ({ path }) => {
       ) : (
         <main className={styles.films}>
           {films ? <FilmsPage films={films} /> : <Spinner />}
+          <ControlledPagination pages={films?.total_pages} />
         </main>
       )}
     </>
