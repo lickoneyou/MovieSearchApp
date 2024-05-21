@@ -40,6 +40,11 @@
   font-weight: 400;
 }
 
+.filmCardWriteUpFullInfo {
+  display: grid;
+  grid-template-columns: 0.85fr 1fr;
+}
+
 .filmCardRatingWrapper {
   display: flex;
   align-items: center;
