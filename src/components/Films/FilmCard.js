@@ -8,14 +8,11 @@ import getYears from '@/handlers/getYears'
 import normalizeVoteAverage from '@/handlers/normalizeVoteAverage'
 import getGenres from '@/handlers/getGenres'
 import normalizeVoteCount from '@/handlers/normalizeVoteCount'
-import normalizeTime from '@/handlers/normalizeTime'
-import normalizeDate from '@/handlers/normalizeDate'
-import normalizeСurrency from '@/handlers/normalizeСurrency'
 import noPoster from '../../img/noPoster.png'
-import createGenresNamesArray from '@/handlers/createGenresNamesArray'
 import { useDisclosure } from '@mantine/hooks'
 import { Button, Modal, Rating } from '@mantine/core'
 import { useDispatch } from 'react-redux'
+import WriteUp from './WriteUp'
 
 const FilmCard = ({
   imgSrc,
@@ -33,6 +30,7 @@ const FilmCard = ({
   w = '119',
   h = '170',
   rValue = 0,
+  isFullInfo,
 }) => {
   const [genres, setGenres] = useState([])
   const [src, setSrc] = useState(
@@ -142,43 +140,16 @@ const FilmCard = ({
               </div>
             </div>
             <div>
-              {duration ? (
-                <p className={styles.filmCardWriteUp}>
-                  Duration <span>{normalizeTime(duration)}</span>
-                </p>
-              ) : (
-                false
-              )}
-              {premiere ? (
-                <p className={styles.filmCardWriteUp}>
-                  Premiere <span>{normalizeDate(premiere)}</span>
-                </p>
-              ) : (
-                false
-              )}
-              {budget ? (
-                <p className={styles.filmCardWriteUp}>
-                  Budget <span>{normalizeСurrency(budget)}</span>
-                </p>
-              ) : (
-                false
-              )}
-              {grossWorldwide ? (
-                <p className={styles.filmCardWriteUp}>
-                  Gross worldwide{' '}
-                  <span>{normalizeСurrency(grossWorldwide)}</span>
-                </p>
-              ) : (
-                false
-              )}
-              <p className={styles.filmCardWriteUp}>
-                Genre{' '}
-                <span>
-                  {genreIds
-                    ? genres.join(', ')
-                    : createGenresNamesArray(genresArr).join(', ')}
-                </span>
-              </p>
+              <WriteUp
+                duration={duration}
+                premiere={premiere}
+                budget={budget}
+                grossWorldwide={grossWorldwide}
+                genreIds={genreIds}
+                genres={genres}
+                genresArr={genresArr}
+                isFullInfo={isFullInfo}
+              />
             </div>
           </div>
         </div>
