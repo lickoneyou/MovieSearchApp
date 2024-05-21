@@ -46,3 +46,7 @@
 .notFoundBtn:hover {
   background: var(--color-purple600);
 }
+
+.App {
+  grid-template-columns: 1fr;
+}

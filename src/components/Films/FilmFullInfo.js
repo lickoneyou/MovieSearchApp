@@ -72,18 +72,20 @@ const FilmFullInfo = () => {
             ) : (
               false
             )}
-            {filmInfo.production_companies ? (
+            {filmInfo.production_companies.filter(
+              (company) => company.logo_path,
+            ).length ? (
               <div className={styles.filmCardConteiner}>
                 <h2 className={styles.title}>Production</h2>
                 <div>
-                  {filmInfo.production_companies.map((compani) => {
-                    if (compani.logo_path) {
+                  {filmInfo.production_companies.map((company) => {
+                    if (company.logo_path) {
                       return (
                         <Production
-                          id={compani.id}
-                          path={compani.logo_path}
-                          alt={compani.name}
-                          key={compani.id}
+                          id={company.id}
+                          path={company.logo_path}
+                          alt={company.name}
+                          key={company.id}
                         />
                       )
                     }
