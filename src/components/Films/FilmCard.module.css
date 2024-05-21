@@ -22,6 +22,7 @@
 
 .filmCardPoster {
   object-fit: contain;
+  min-width: 119px;
 }
 
 .filmCardTitle {

@@ -9,6 +9,8 @@
 
 .ratedPageWrapper {
   padding: 40px 90px 0 90px;
+  background-color: var(--color-gray100);
+
 }
 
 .searchWrapper {
@@ -63,4 +65,32 @@
 
 .notrateBtn:hover {
   background: var(--color-purple600);
+}
+
+@media screen and (max-width: 1400px) {
+  .App {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .ratedPageWrapper {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+@media screen and (max-width: 1150px) {
+  .searchWrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ratedFilmsTitle {
+    margin-bottom: 20px;
+  }
+
+  .filmsPage {
+    grid-template-columns: 1fr;
+  }
 }
