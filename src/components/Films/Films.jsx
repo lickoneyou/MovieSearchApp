@@ -14,7 +14,6 @@ const Films = ({ path }) => {
 
   useEffect(() => {
     getFilms(setFilms, getQueryArray(filters), path)
-    console.log(films)
   }, [filters])
 
   return (
