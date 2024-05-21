@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: flex-end;
   padding: 41.5px 90px 0 90px;
+  background-color: var(--color-gray100);
 }
 
 .searchWrapper {
@@ -18,7 +19,7 @@
   line-height: 140%;
 }
 
-.filterFormWrapper{
+.filterFormWrapper {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
