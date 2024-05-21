@@ -1,4 +1,5 @@
 import { Breadcrumbs, Anchor } from '@mantine/core'
+import styles from './FilmFullInfo.module.css'
 
 function Bredcr({ page, filmTitle, filmPath }) {
   const items = [
@@ -10,7 +11,7 @@ function Bredcr({ page, filmTitle, filmPath }) {
     </Anchor>
   ))
 
-  return <Breadcrumbs>{items}</Breadcrumbs>
+  return <Breadcrumbs className={styles.crumbs}>{items}</Breadcrumbs>
 }
 
 export default Bredcr
