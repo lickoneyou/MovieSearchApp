@@ -23,3 +23,9 @@
   line-height: normal;
   letter-spacing: 1.3px;
 }
+
+@media screen and (max-width: 1150px) {
+  .filmsPage {
+    grid-template-columns: 1fr;
+  }
+}

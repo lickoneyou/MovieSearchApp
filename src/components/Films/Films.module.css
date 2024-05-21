@@ -2,3 +2,12 @@
   background-color: var(--color-gray100);
   padding: 28.5px 90px 82px 90px;
 }
+
+@media screen and (max-width: 1400px) {
+  .films {
+    grid-row: 3/3;
+    grid-column: 1/1;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}

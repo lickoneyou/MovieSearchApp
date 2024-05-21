@@ -7,3 +7,9 @@
   grid-template-rows: 3fr 9fr;
   background-color: var(--color-gray100);
 }
+
+@media screen and (max-width: 1400px) {
+  .App {
+    grid-template-columns: 1fr;
+  }
+}

@@ -21,7 +21,7 @@
 }
 
 .filmCardPoster {
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .filmCardTitle {
@@ -146,4 +146,25 @@
 
 .btnWrapper {
   display: flex;
+}
+
+@media screen and (max-width: 670px) {
+  .filmCard {
+    padding: 5px;
+  }
+
+  .rateWrapper {
+    display: none;
+  }
+
+  .filmCardTitle,
+  .filmCardRatingVoteCount,
+  .filmCardRatingVoteAverage {
+    font-size: 15px;
+  }
+
+  .filmCardReleaseDate,
+  .filmCardWriteUp {
+    font-size: 12px;
+  }
 }

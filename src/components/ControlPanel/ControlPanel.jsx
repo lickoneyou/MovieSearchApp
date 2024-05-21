@@ -87,6 +87,7 @@ const ControlPanel = () => {
           ]}
         />
         <Button
+        className={styles.resetBtn}
           variant="transparent"
           color="var(--color-gray600)"
           pr="0px"
