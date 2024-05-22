@@ -4,6 +4,7 @@ import ControlPanel from '@/components/ControlPanel/ControlPanel'
 import Films from '@/components/Films/Films'
 import NavPanel from '@/components/NavPanel/NavPanel'
 import styles from './page.module.css'
+import React from 'react'
 
 export default function Home() {
   return (

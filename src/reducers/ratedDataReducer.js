@@ -1,12 +1,13 @@
 import addLocalStorageFilmHandler from '@/handlers/addLocalStorageFilmHandler'
 import removeLocalStorageFilmHandler from '@/handlers/removeLocalStorageFilmHandler'
 
-export const ratedData = (state, action) => {
-  if (!localStorage.getItem('ratedData')) {
-    localStorage.setItem('ratedData', JSON.stringify({}))
+export const ratedData = (state = {}, action) => {
+  if (typeof global?.window !== 'undefined') {
+    if (!localStorage.getItem('ratedData')) {
+      localStorage.setItem('ratedData', JSON.stringify({}))
+    }
+    state = JSON.parse(localStorage.getItem('ratedData'))
   }
-
-  state = JSON.parse(localStorage.getItem('ratedData'))
 
   switch (action.type) {
     case 'ADD_FILM':
