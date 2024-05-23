@@ -47,6 +47,8 @@
   background: var(--color-purple600);
 }
 
-.App {
-  grid-template-columns: 1fr;
+@media screen and (max-width: 1400px) {
+  .App {
+    grid-template-columns: 1fr;
+  }
 }
