@@ -67,6 +67,7 @@
 
 .filmCardPurpleStars {
   color: var(--color-purple500Main);
+  min-width: 28px;
 }
 
 .filmCardRatingVoteAverage {
