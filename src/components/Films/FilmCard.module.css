@@ -63,6 +63,7 @@
   margin-right: 0;
   color: var(--color-gray300);
   cursor: pointer;
+  min-width: 28px;
 }
 
 .filmCardPurpleStars {
