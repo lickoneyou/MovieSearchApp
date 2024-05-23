@@ -8,9 +8,9 @@ import styles from '../../page.module.css'
 export default function Search() {
   return (
     <div className={styles.App}>
-      // <NavPanel />
-      // <ControlPanel />
-      // <Films path="search" />
+      <NavPanel />
+      <ControlPanel />
+      <Films path="search" />
     </div>
   )
 }
